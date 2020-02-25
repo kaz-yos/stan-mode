@@ -1477,6 +1477,7 @@ Ill-typed arguments to '~' statement. No distribution 'normall' was found with t
                          :filename "examples/example_error_undefined_function.stan"
                          :line 18
                          :column 2
+                         :end-column 22
                          :message "Semantic error in 'examples/example_error_undefined_function.stan', line 18, column 2 to column 22:
    -------------------------------------------------
     16:  }
@@ -1511,6 +1512,7 @@ Expected top-level variable declaration or \"}\"."
                          :filename "examples/example_error_and_info_misspelled_type.stan"
                          :line 8
                          :column 11
+                         :end-column 12
                          :message "Syntax error in 'examples/example_error_and_info_misspelled_type.stan', line 8, column 11 to column 12, parsing error:
    -------------------------------------------------
      6:    vector<lower=0>[J] sigma;
@@ -2536,6 +2538,7 @@ model {
     10:    real<lower=0> tau;
    -------------------------------------------------
 Expected top-level variable declaration or \"}\"."
+                   :end-column 12
                    :checker 'stanc3
                    :id nil
                    :group 'syntax-parsing
@@ -2616,6 +2619,7 @@ Comments beginning with # are deprecated. Please use // in place of # for line c
     10:    real<lower=0> tau;
    -------------------------------------------------
 Expected top-level variable declaration or \"}\"."
+              :end-column 12
               :checker 'stanc3
               :id nil
               :group 'syntax-parsing
@@ -2658,6 +2662,7 @@ Expected top-level variable declaration or \"}\"."
     21:    y ~ normal(theta, sigma);
    -------------------------------------------------
 Probabilty functions with suffixes _lpdf, _lpmf, _lcdf, and _lccdf, require a vertical bar (|) between the first two arguments."
+                   :end-column 35
                    :checker 'stanc3
                    :id nil
                    :group 'semantic
@@ -2758,6 +2763,7 @@ Comments beginning with # are deprecated. Please use // in place of # for line c
     21:    y ~ normal(theta, sigma);
    -------------------------------------------------
 Probabilty functions with suffixes _lpdf, _lpmf, _lcdf, and _lccdf, require a vertical bar (|) between the first two arguments."
+              :end-column 35
               :checker 'stanc3
               :id nil
               :group 'semantic
@@ -2800,6 +2806,7 @@ Probabilty functions with suffixes _lpdf, _lpmf, _lcdf, and _lccdf, require a ve
     20:    eta ~ normal(0, 1); // implies theta ~ normal(mu, tau)
    -------------------------------------------------
 Ill-typed arguments to '~' statement. No distribution 'normall' was found with the correct signature."
+                   :end-column 22
                    :checker 'stanc3
                    :id nil
                    :group 'semantic
@@ -2900,6 +2907,7 @@ Comments beginning with # are deprecated. Please use // in place of # for line c
     20:    eta ~ normal(0, 1); # implies theta ~ normal(mu, tau)
    -------------------------------------------------
 Ill-typed arguments to '~' statement. No distribution 'normall' was found with the correct signature."
+              :end-column 22
               :checker 'stanc3
               :id nil
               :group 'semantic
@@ -3065,6 +3073,7 @@ Could not find include file no_such_file.stan in specified include paths."
     17:  model {
    -------------------------------------------------
 Identifier 'mu' not in scope."
+                   :end-column 12
                    :checker 'stanc3
                    :id nil
                    :group 'semantic
@@ -3184,6 +3193,7 @@ Comments beginning with # are deprecated. Please use // in place of # for line c
     17:  model {
    -------------------------------------------------
 Identifier 'mu' not in scope."
+                   :end-column 12
                    :checker 'stanc3
                    :id nil
                    :group 'semantic
@@ -3846,6 +3856,7 @@ Comments beginning with # are deprecated. Please use // in place of # for line c
     10:    // The parser stops at the above line.
    -------------------------------------------------
 Expected top-level variable declaration or \"}\".")
+                  :end-column 12
                   :checker 'stanc3
                   :id nil
                   :group 'syntax-parsing
@@ -4033,6 +4044,7 @@ increment_log_prob(...); is deprecated and will be removed in the future. Use ta
     22:  }
    -------------------------------------------------
 Probabilty functions with suffixes _lpdf, _lpmf, _lcdf, and _lccdf, require a vertical bar (|) between the first two arguments.")
+                  :end-column 49
                   :checker 'stanc3
                   :id nil
                   :group 'semantic
