@@ -186,10 +186,16 @@ Note that the file name is captured from the message.")
      "'" (file-name) "'"
      ", line " line
      ", column " column ":"
+     ;; end-line / end-column pattern
+     (zero-or-more (seq " to line " end-line
+                        ", column " end-column))
+     ;; end-column only pattern
+     (zero-or-more " to column " end-column)
      (one-or-more (or not-newline "\n" "\r"))
      ;; To avoid trailing empty lines.
      (not (any whitespace "\n" "\r"))))
   "An `rx' regexp for a `stanc3' warning with `line' and `column' information.
+`end-line' and `end-column' are also captured if present.
 Note that the file name is captured from the message.")
 
 (defvar flycheck-stan--rx-stanc3-semantic-error
@@ -198,10 +204,16 @@ Note that the file name is captured from the message.")
      "Semantic error in " "'" (file-name) "'"
      ", line " line
      ", column " column
+     ;; end-line / end-column pattern
+     (zero-or-more (seq " to line " end-line
+                        ", column " end-column))
+     ;; end-column only pattern
+     (zero-or-more " to column " end-column)
      (one-or-more (or not-newline "\n" "\r"))
      ;; To avoid trailing empty lines.
      (not (any whitespace "\n" "\r"))))
   "An `rx' regexp for `stanc3' error with `line' and `column' information.
+`end-line' and `end-column' are also captured if present.
 This one is for a semantic error.
 Note that the file name is captured from the message.")
 
@@ -211,12 +223,18 @@ Note that the file name is captured from the message.")
      "Syntax error in " "'" (file-name) "'"
      ", line " line
      ", column " column
+          ;; end-line / end-column pattern
+     (zero-or-more (seq " to line " end-line
+                        ", column " end-column))
+     ;; end-column only pattern
+     (zero-or-more " to column " end-column)
      (one-or-more not-newline)
      "parsing error"
      (one-or-more (or not-newline "\n" "\r"))
      ;; To avoid trailing empty lines.
      (not (any whitespace "\n" "\r"))))
   "An `rx' regexp for `stanc3' error with `line' and `column' information.
+`end-line' and `end-column' are also captured if present.
 This one is for a syntax error (parsing).
 Note that the file name is captured from the message.")
 
@@ -226,12 +244,18 @@ Note that the file name is captured from the message.")
      "Syntax error in " "'" (file-name) "'"
      ", line " line
      ", column " column
+     ;; end-line / end-column pattern
+     (zero-or-more (seq " to line " end-line
+                        ", column " end-column))
+     ;; end-column only pattern
+     (zero-or-more " to column " end-column)
      (one-or-more not-newline)
      "lexing error"
      (one-or-more (or not-newline "\n" "\r"))
      ;; To avoid trailing empty lines.
      (not (any whitespace "\n" "\r"))))
   "An `rx' regexp for `stanc3' error with `line' and `column' information.
+`end-line' and `end-column' are also captured if present.
 This one is for a syntax error (lexing).
 Note that the file name is captured from the message.")
 
@@ -241,12 +265,18 @@ Note that the file name is captured from the message.")
      "Syntax error in " "'" (file-name) "'"
      ", line " line
      ", column " column
+     ;; end-line / end-column pattern
+     (zero-or-more (seq " to line " end-line
+                        ", column " end-column))
+     ;; end-column only pattern
+     (zero-or-more " to column " end-column)
      (one-or-more not-newline)
      "include error"
      (one-or-more (or not-newline "\n" "\r"))
      ;; To avoid trailing empty lines.
      (not (any whitespace "\n" "\r"))))
   "An `rx' regexp for `stanc3' error with `line' and `column' information.
+`end-line' and `end-column' are also captured if present.
 This one is for a syntax error (include).
 Note that the file name is captured from the message.")
 
