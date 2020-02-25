@@ -203,8 +203,8 @@ clean-dist :
 # Quote with '' for touch to avoid issues with spaces in path names.
 # https://stackoverflow.com/questions/9838384/can-gnu-make-handle-filenames-with-spaces
 $(PKGDIR) : Cask
-	$(CASK) install
-	$(CASK) update
+	$(CASK) --verbose install
+	$(CASK) --verbose update
 	touch '$(PKGDIR)'
 
 # (batch-byte-compile &optional NOFORCE)
