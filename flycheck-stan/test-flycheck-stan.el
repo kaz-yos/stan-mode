@@ -3236,6 +3236,8 @@ Identifier 'mu' not in scope."
      9:    real mu;
    -------------------------------------------------
 Expected \"transformed data {\" or \"parameters {\" or \"transformed parameters {\" or \"model {\" or \"generated quantities {\"."
+                   :end-line 7
+                   :end-column 1
                    :checker 'stanc3
                    :id nil
                    :group 'syntax-parsing
@@ -3316,6 +3318,8 @@ Comments beginning with # are deprecated. Please use // in place of # for line c
      9:    real mu;
    -------------------------------------------------
 Expected \"transformed data {\" or \"parameters {\" or \"transformed parameters {\" or \"model {\" or \"generated quantities {\"."
+              :end-line 7
+              :end-column 1
               :checker 'stanc3
               :id nil
               :group 'syntax-parsing
