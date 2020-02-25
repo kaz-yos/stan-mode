@@ -67,6 +67,17 @@ to handle error message parsing.
 
 The body was taken from `flycheck-rx-to-string'.
 
+The group number assignment is as follows:
+
+- 1 file-name
+- 2 line
+- 3 column
+- 4 message
+- 5 id
+
+These are the numbers that `match-string' should use to
+extract the corresponding components.
+
 This function is intended for use in the `re-builder'
 to enhance the pattern for interactive `rx' building."
   (interactive)
@@ -74,11 +85,13 @@ to enhance the pattern for interactive `rx' building."
               (append
                `((line . ,(rx (group-n 2 (one-or-more digit))))
                  (column . ,(rx (group-n 3 (one-or-more digit))))
+                 ;; group-n 1 as defined in `flycheck-rx-file-name'
                  (file-name flycheck-rx-file-name 0 nil)
+                 ;; group-n 4 as defined in `flycheck-rx-message'
                  (message flycheck-rx-message 0 nil)
+                 ;; group-n 5 as defined in `flycheck-rx-id'
                  (id flycheck-rx-id 0 nil))
                rx-constituents nil)))
-
 
 ;;;
 ;;; Define a parser
