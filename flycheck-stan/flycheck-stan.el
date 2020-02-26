@@ -81,7 +81,17 @@ These are the numbers that `match-string' should use to
 extract the corresponding components.
 
 This function is intended for use in the `re-builder'
-to enhance the pattern for interactive `rx' building."
+to enhance the pattern for interactive `rx' building.
+
+Workflow:
+M-x re-builder
+M-x flycheck-stan-enhance-rx-buffer-locally (in *RE-Builder*)
+Copy and paste the body of regexp definitions within `defvar'
+including the quote to the *RE-Builder* buffer.
+
+References:
+https://www.reddit.com/r/emacs/comments/8qr1db/how_to_use_rx_syntax_in_rebuilder/
+https://www.masteringemacs.org/article/re-builder-interactive-regexp-builder"
   (interactive)
   (setq-local rx-constituents
               (append
