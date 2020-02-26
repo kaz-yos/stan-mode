@@ -74,6 +74,8 @@ The group number assignment is as follows:
 - 3 column
 - 4 message
 - 5 id
+- 6 end-line
+- 7 end-column
 
 These are the numbers that `match-string' should use to
 extract the corresponding components.
@@ -83,14 +85,13 @@ to enhance the pattern for interactive `rx' building."
   (interactive)
   (setq-local rx-constituents
               (append
-               `((line . ,(rx (group-n 2 (one-or-more digit))))
+               `((file-name flycheck-rx-file-name 0 nil) ;; group 1
+                 (line . ,(rx (group-n 2 (one-or-more digit))))
                  (column . ,(rx (group-n 3 (one-or-more digit))))
-                 ;; group-n 1 as defined in `flycheck-rx-file-name'
-                 (file-name flycheck-rx-file-name 0 nil)
-                 ;; group-n 4 as defined in `flycheck-rx-message'
-                 (message flycheck-rx-message 0 nil)
-                 ;; group-n 5 as defined in `flycheck-rx-id'
-                 (id flycheck-rx-id 0 nil))
+                 (message flycheck-rx-message 0 nil) ;; group 4
+                 (id flycheck-rx-id 0 nil) ;; group 5
+                 (end-line . ,(rx (group-n 6 (one-or-more digit))))
+                 (end-column . ,(rx (group-n 7 (one-or-more digit)))))
                rx-constituents nil)))
 
 ;;;
