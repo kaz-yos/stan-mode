@@ -1457,7 +1457,7 @@ Comments beginning with # are deprecated. Please use // in place of # for line c
                          :group nil)))
   ;;
   ;; Errors
-  (it "converts a semantic error correctly"
+  (it "converts a semantic error correctly (end-column)"
     (expect
      (flycheck-stan-convert-message-to-error-stanc3
       "Semantic error in 'examples/example_error_undefined_function.stan', line 18, column 2 to column 22:
@@ -1492,7 +1492,7 @@ Ill-typed arguments to '~' statement. No distribution 'normall' was found with t
                          :id nil
                          :group 'semantic)))
   ;;
-  (it "converts a syntax error (parsing error) correctly"
+  (it "converts a syntax error (parsing error) correctly (end-column)"
     (expect
      (flycheck-stan-convert-message-to-error-stanc3
       "Syntax error in 'examples/example_error_and_info_misspelled_type.stan', line 8, column 11 to column 12, parsing error:
@@ -1523,6 +1523,42 @@ Expected top-level variable declaration or \"}\"."
     10:    real<lower=0> tau;
    -------------------------------------------------
 Expected top-level variable declaration or \"}\"."
+                         :level 'error
+                         :id nil
+                         :group 'syntax-parsing)))
+  ;;
+  (it "converts a syntax error (parsing error) correctly (end-line/column)"
+    (expect
+     (flycheck-stan-convert-message-to-error-stanc3
+      "Syntax error in 'examples/example_failure_misspelled_block.stan', line 3, column 0 to line 7, column 1, parsing error:
+   -------------------------------------------------
+     5:    vector[J] y;
+     6:    vector<lower=0>[J] sigma;
+     7:  }
+          ^
+     8:  pparameters {
+     9:    real mu;
+   -------------------------------------------------
+Expected \"transformed data {\" or \"parameters {\" or \"transformed parameters {\" or \"model {\" or \"generated quantities {\"."
+      'buffer 'stanc3 "fake_input_file")
+     :to-equal
+     (flycheck-error-new :buffer 'buffer
+                         :checker 'stanc3
+                         :filename "examples/example_failure_misspelled_block.stan"
+                         :line 3
+                         :column 0
+                         :end-line 7
+                         :end-column 1
+                         :message "Syntax error in 'examples/example_failure_misspelled_block.stan', line 3, column 0 to line 7, column 1, parsing error:
+   -------------------------------------------------
+     5:    vector[J] y;
+     6:    vector<lower=0>[J] sigma;
+     7:  }
+          ^
+     8:  pparameters {
+     9:    real mu;
+   -------------------------------------------------
+Expected \"transformed data {\" or \"parameters {\" or \"transformed parameters {\" or \"model {\" or \"generated quantities {\"."
                          :level 'error
                          :id nil
                          :group 'syntax-parsing)))
