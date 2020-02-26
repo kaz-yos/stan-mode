@@ -519,10 +519,8 @@ Lines cannot be nil.  They are set to 0.
                                 0)
                         :column (when-let ((column (match-string 3 message)))
                                   (string-to-number column))
-                        ;; FIXME: group-n 6 is made up.
                         :end-line (when-let ((end-line (match-string 6 message)))
                                     (string-to-number end-line))
-                        ;; FIXME: group-n 7 is made up.
                         :end-column (when-let ((end-column (match-string 7 message)))
                                       (string-to-number end-column))
                         :message message
@@ -540,10 +538,8 @@ Lines cannot be nil.  They are set to 0.
                                 0)
                         :column (when-let ((column (match-string 3 message)))
                                   (string-to-number column))
-                        ;; FIXME: group-n 6 is made up.
                         :end-line (when-let ((end-line (match-string 6 message)))
                                     (string-to-number end-line))
-                        ;; FIXME: group-n 7 is made up.
                         :end-column (when-let ((end-column (match-string 7 message)))
                                       (string-to-number end-column))
                         :message message
@@ -561,10 +557,8 @@ Lines cannot be nil.  They are set to 0.
                                 0)
                         :column (when-let ((column (match-string 3 message)))
                                   (string-to-number column))
-                        ;; FIXME: group-n 6 is made up.
                         :end-line (when-let ((end-line (match-string 6 message)))
                                     (string-to-number end-line))
-                        ;; FIXME: group-n 7 is made up.
                         :end-column (when-let ((end-column (match-string 7 message)))
                                       (string-to-number end-column))
                         :message message
@@ -582,10 +576,8 @@ Lines cannot be nil.  They are set to 0.
                                 0)
                         :column (when-let ((column (match-string 3 message)))
                                   (string-to-number column))
-                        ;; FIXME: group-n 6 is made up.
                         :end-line (when-let ((end-line (match-string 6 message)))
                                     (string-to-number end-line))
-                        ;; FIXME: group-n 7 is made up.
                         :end-column (when-let ((end-column (match-string 7 message)))
                                       (string-to-number end-column))
                         :message message
@@ -603,10 +595,8 @@ Lines cannot be nil.  They are set to 0.
                                 0)
                         :column (when-let ((column (match-string 3 message)))
                                   (string-to-number column))
-                        ;; FIXME: group-n 6 is made up.
                         :end-line (when-let ((end-line (match-string 6 message)))
                                     (string-to-number end-line))
-                        ;; FIXME: group-n 7 is made up.
                         :end-column (when-let ((end-column (match-string 7 message)))
                                       (string-to-number end-column))
                         :message message
