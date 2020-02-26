@@ -107,9 +107,13 @@ to enhance the pattern for interactive `rx' building."
 ;; which is used to convert these into string regexps.
 ;;
 ;; `line'
-;;      matches the line number.
+;;      matches the initial line number.
 ;; `column'
-;;      matches the column number.
+;;      matches the initial column number.
+;; `end-line'
+;;      matches the final line number.
+;; `end-column'
+;;      matches the final column number.
 ;; `(file-name SEXP ...)'
 ;;      matches the file name.  SEXP describes the file name.  If no
 ;;      SEXP is given, use a default body of `(minimal-match
@@ -120,7 +124,9 @@ to enhance the pattern for interactive `rx' building."
 ;;      of `(one-or-more not-newline)'.
 ;; `(id SEXP ...)'
 ;;      matches an error ID.  SEXP describes the ID.
+;; NO-GROUP is passed to `rx-to-string'.
 ;;
+;; Issues encountered in supporting stanc2.
 ;; These are used in `flycheck-stan-parser' rather than in
 ;; :error-patterns.  A more conventional approach using regexps
 ;; in :error-patterns was not successful because the filename
