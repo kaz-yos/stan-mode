@@ -243,7 +243,7 @@
 (describe "eldoc-stan--format-arguments-string"
   (let* ((arguments-1 "(int[] y, matrix x, real alpha, vector beta, real phi)")
          (arguments-2 "(int[] y | matrix x, real alpha, vector beta, real phi)")
-         ;; (arguments-3 "(real[,] a)")
+         (arguments-3 "(real[,] a)")
          (arguments-4 "(int[...] a)"))
     ;;
     (it "performs add-text-properties to the right argument within ()"
