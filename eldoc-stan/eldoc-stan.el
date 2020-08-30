@@ -176,13 +176,20 @@ the construction of these regexp."
                   pos
                   (not (string= (substring arguments (+ pos 2) (+ pos 6))
                                 "...)")))
+        (setq pos-next-square-bracket-left (string-match "\[" arguments (1+ pos)))
+        (setq pos-next-square-bracket-right (string-match "\]" arguments (1+ pos)))
         ;; Move pos to the next separator , or |.
         ;; This does not ignore , in real[,].
         (setq pos
               ;; (string-match REGEXP STRING &optional START)
               (string-match "[,|]" arguments (1+ pos)))
-        ;; Decrease index by 1.
-        (setq index (1- index)))
+        ;; Decrease index by 1 unless next separator is between [ and ].
+        (unless (and pos-next-square-bracket-left
+                     pos-next-square-bracket-right
+                     (< pos-next-square-bracket-left
+                        pos
+                        pos-next-square-bracket-right))
+          (setq index (1- index))))
       ;; while loop exits when index == 1.
       ;; pos should be at , right before the current argument.
       ;; embolden the current argument
