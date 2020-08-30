@@ -70,6 +70,7 @@
 ;; defines: c-literal-limits, c-literal-type, c-forward-token-2,
 ;;          c-backward-sws
 (require 'cc-engine)
+(require 'rx)
 
 ;;; The following functions are for production use.
 ;;; Data structure to lookup function signatures.
