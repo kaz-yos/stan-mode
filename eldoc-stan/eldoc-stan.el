@@ -176,8 +176,8 @@ the construction of these regexp."
                   pos
                   (not (string= (substring arguments (+ pos 2) (+ pos 6))
                                 "...)")))
-        (setq pos-next-square-bracket-left (string-match "\[" arguments (1+ pos)))
-        (setq pos-next-square-bracket-right (string-match "\]" arguments (1+ pos)))
+        (setq pos-next-square-bracket-left  (string-match (rx "[") arguments (1+ pos)))
+        (setq pos-next-square-bracket-right (string-match (rx "]") arguments (1+ pos)))
         ;; Move pos to the next separator , or |.
         ;; This does not ignore , in real[,].
         (setq pos
