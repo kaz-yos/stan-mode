@@ -307,17 +307,17 @@
        :to-equal-including-properties
        arguments-2)
       ;;
-      ;; (expect
-      ;;  (eldoc-stan--format-arguments-string arguments-3 2)
-      ;;  :to-equal-including-properties
-      ;;  arguments-3)
+      (expect
+       (eldoc-stan--format-arguments-string arguments-3 2)
+       :to-equal-including-properties
+       arguments-3)
       ;;
       (expect
        (eldoc-stan--format-arguments-string arguments-4 2)
        :to-equal-including-properties
        arguments-4))
     ;;
-    (xit "ignores , in [,] correctly"
+    (it "ignores , in [,] correctly"
       (expect
        (eldoc-stan--format-arguments-string arguments-3 1)
        :to-equal-including-properties
