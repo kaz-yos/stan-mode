@@ -156,7 +156,9 @@ It detects the relevant argument location skipping leading
 ones using regexp.  See the corresponding test file for
 the construction of these regexp."
   (let ((paren-pos (string-match "(" arguments))
-        (pos 0))
+        (pos 0)
+        (pos-next-square-bracket-left nil)
+        (pos-next-square-bracket-right nil))
     ;; This proceeds when `(' exists in the arguments string.
     (when paren-pos
       (setq arguments (replace-regexp-in-string "\\\\?[[:space:]\\\n]"
